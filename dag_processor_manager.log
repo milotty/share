@@ -1,0 +1,33 @@
+[2021-01-11 11:41:22,124] {logging_mixin.py:112} INFO - [2021-01-11 11:41:22,123] {timeout.py:42} ERROR - Process timed out, PID: 14826
+[2021-01-11 11:41:22,155] {logging_mixin.py:112} INFO - [2021-01-11 11:41:22,151] {dagbag.py:240} ERROR - Failed to import: /home/amy/airflow/airflow_deploy/airflow_dag_example.py
+Traceback (most recent call last):
+  File "/scratch/anaconda3/envs/tf/lib/python3.7/site-packages/airflow/models/dagbag.py", line 237, in process_file
+    m = imp.load_source(mod_name, filepath)
+  File "/scratch/anaconda3/envs/tf/lib/python3.7/imp.py", line 171, in load_source
+    module = _load(spec)
+  File "<frozen importlib._bootstrap>", line 696, in _load
+  File "<frozen importlib._bootstrap>", line 677, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/amy/airflow/airflow_deploy/airflow_dag_example.py", line 12, in <module>
+    af.set_master_config()
+  File "/scratch/anaconda3/envs/tf/lib/python3.7/site-packages/ai_flow/application_master/master.py", line 90, in set_master_config
+    code, config, message = get_ai_flow_client().get_master_config()
+  File "/scratch/anaconda3/envs/tf/lib/python3.7/site-packages/ai_flow/client/ai_flow_client.py", line 32, in get_ai_flow_client
+    ensure_project_registered()
+  File "/scratch/anaconda3/envs/tf/lib/python3.7/site-packages/ai_flow/api/configuration.py", line 31, in ensure_project_registered
+    project_meta = client.get_project_by_name(_default_project_config.get_project_name())
+  File "/scratch/anaconda3/envs/tf/lib/python3.7/site-packages/ai_flow/rest_endpoint/service/client/metadata_client.py", line 834, in get_project_by_name
+    response = self.metadata_store_stub.getProjectByName(request)
+  File "/scratch/anaconda3/envs/tf/lib/python3.7/site-packages/grpc/_channel.py", line 823, in __call__
+    wait_for_ready, compression)
+  File "/scratch/anaconda3/envs/tf/lib/python3.7/site-packages/grpc/_channel.py", line 811, in _blocking
+    event = call.next_event()
+  File "src/python/grpcio/grpc/_cython/_cygrpc/channel.pyx.pxi", line 340, in grpc._cython.cygrpc.SegregatedCall.next_event
+  File "src/python/grpcio/grpc/_cython/_cygrpc/channel.pyx.pxi", line 173, in grpc._cython.cygrpc._next_call_event
+  File "src/python/grpcio/grpc/_cython/_cygrpc/channel.pyx.pxi", line 167, in grpc._cython.cygrpc._next_call_event
+  File "src/python/grpcio/grpc/_cython/_cygrpc/completion_queue.pyx.pxi", line 67, in grpc._cython.cygrpc._latent_event
+  File "src/python/grpcio/grpc/_cython/_cygrpc/completion_queue.pyx.pxi", line 46, in grpc._cython.cygrpc._next
+  File "/scratch/anaconda3/envs/tf/lib/python3.7/site-packages/airflow/utils/timeout.py", line 43, in handle_timeout
+    raise AirflowTaskTimeout(self.error_message)
+airflow.exceptions.AirflowTaskTimeout: Timeout, PID: 14826
